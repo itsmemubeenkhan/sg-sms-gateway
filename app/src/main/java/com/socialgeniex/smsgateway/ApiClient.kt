@@ -59,7 +59,7 @@ class ApiClient(baseUrl: String, private val token: String) {
 
     @Throws(IOException::class)
     fun report(jobId: Long, status: String, error: String? = null) {
-        val r = JSONObject().put("job_id", jobId).put("status", status)
+        val r = JSONObject().put("id", jobId).put("status", status)
         if (error != null) r.put("error", error)
         call(
             "/api/sms/gateway/report", "POST",
