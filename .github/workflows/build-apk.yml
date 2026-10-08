@@ -30,3 +30,27 @@ jobs:
         with:
           name: sg-sms-gateway-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Generate keystore for release
+        run: |
+          keytool -genkey -v -keystore /tmp/sg-release.keystore -alias sg-sms-gateway -keyalg RSA -keysize 2048 -validity 10000 -storepass "SgSms2026!" -keypass "SgSms2026!" -dname "CN=SocialGeniex, OU=Mobile, O=SocialGeniex, L=New York, ST=NY, C=US"
+
+      - name: Build release AAB
+        run: |
+          gradle bundleRelease --no-daemon \
+            -Pandroid.injected.signing.store.file=/tmp/sg-release.keystore \
+            -Pandroid.injected.signing.store.password="SgSms2026!" \
+            -Pandroid.injected.signing.key.alias=sg-sms-gateway \
+            -Pandroid.injected.signing.key.password="SgSms2026!"
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: sg-sms-gateway-aab
+          path: app/build/outputs/bundle/release/app-release.aab
+
+      - name: Upload keystore (save securely!)
+        uses: actions/upload-artifact@v4
+        with:
+          name: sg-sms-gateway-keystore
+          path: /tmp/sg-release.keystore
