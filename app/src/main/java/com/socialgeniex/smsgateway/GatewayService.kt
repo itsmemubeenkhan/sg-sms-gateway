@@ -149,7 +149,7 @@ class GatewayService : Service() {
             val j = jobs.optJSONObject(i) ?: continue
             val jobId = j.optLong("id", -1L)
             if (jobId < 0) continue
-            val to = j.optString("to_number", "").trim()
+            val to = (if (j.has("to_number")) j.optString("to_number", "") else j.optString("to", "")).trim()
             val body = j.optString("body", "")
             if (to.isEmpty() || body.isEmpty()) {
                 reportOne(jobId, "failed", "Empty message")
