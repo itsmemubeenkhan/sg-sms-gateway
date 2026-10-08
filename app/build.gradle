@@ -1,0 +1,56 @@
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+// NOTE: the google-services plugin is intentionally NOT applied.
+// The app compiles and runs WITHOUT google-services.json (push is optional).
+// To enable FCM push: add google-services.json, apply the plugin, and remove
+// the tools:node="remove" on FirebaseInitProvider in AndroidManifest.xml.
+
+android {
+    namespace = "com.socialgeniex.smsgateway"
+    compileSdk = 34
+
+    defaultConfig {
+        applicationId = "com.socialgeniex.smsgateway"
+        minSdk = 26
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+dependencies {
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    // QR scanner (ZXing via intent-style contract, no manual camera code needed)
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    // Push is OPTIONAL — guarded with try/catch, works without google-services.json
+    implementation("com.google.firebase:firebase-messaging:23.4.0")
+}

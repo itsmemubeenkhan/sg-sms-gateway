@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SocialGeniex brand theme: deep green primary, lime accent, white background.
+         No generic Material blue/purple anywhere. -->
+    <style name="Theme.SGSMSGateway" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/deep_green</item>
+        <item name="colorPrimaryVariant">@color/deep_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/lime</item>
+        <item name="colorSecondaryVariant">@color/lime_dark</item>
+        <item name="colorOnSecondary">@color/deep_green</item>
+        <item name="android:colorAccent">@color/lime</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/deep_green</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+    <!-- Small label / value rows inside the Advanced section -->
+    <style name="AdvLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AdvValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textColor">@color/deep_green</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+</resources>

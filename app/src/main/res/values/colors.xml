@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SocialGeniex brand -->
+    <color name="deep_green">#043B2C</color>
+    <color name="deep_green_dark">#032A20</color>
+    <color name="lime">#C8F04A</color>
+    <color name="lime_dark">#A9CF3E</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Supporting -->
+    <color name="gray">#6B7280</color>
+    <color name="light_gray">#E5E7EB</color>
+    <color name="log_bg">#F7F8F5</color>
+    <color name="amber">#D97706</color>
+    <color name="red">#C0392B</color>
+    <color name="green_ok">#0E7A4D</color>
+</resources>
