@@ -187,6 +187,7 @@ class MainActivity : AppCompatActivity() {
             .setPositiveButton("Unlink") { _, _ ->
                 prefs.clearAll()
                 GatewayService.stop(this)
+                PollWorker.cancelAll(this)
                 LogStore.add("Phone unlinked")
                 startActivity(Intent(this, OnboardingActivity::class.java))
                 finish()
@@ -200,7 +201,7 @@ class MainActivity : AppCompatActivity() {
         if (pm.isIgnoringBatteryOptimizations(packageName)) return
         MaterialAlertDialogBuilder(this)
             .setTitle("Keep it running")
-            .setMessage("To send messages reliably, allow this app to run in the background without battery limits.")
+            .setMessage("To send messages reliably:\n\n1. Allow background running without battery limits (next screen).\n\n2. On Infinix/Xiaomi/Oppo/Vivo also do this: Phone Settings > Apps > SocialGeniex SMS > Battery > set to Unrestricted, and enable Autostart.\n\n3. Lock this app in your recent-apps screen so the system never swipes it away.")
             .setPositiveButton("Allow") { _, _ -> promptBatteryOpt() }
             .setNegativeButton("Later", null)
             .show()

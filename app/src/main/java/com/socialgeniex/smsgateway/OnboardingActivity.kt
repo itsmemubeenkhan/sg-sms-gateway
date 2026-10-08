@@ -178,6 +178,7 @@ class OnboardingActivity : AppCompatActivity() {
                     b.doneName.text = deviceName()
                     showStep(3)
                     GatewayService.start(this@OnboardingActivity)
+                    PollWorker.schedule(this@OnboardingActivity)
                 }
             } catch (t: Throwable) {
                 withContext(Dispatchers.Main) {
